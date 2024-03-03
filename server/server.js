@@ -4,6 +4,10 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 
+import revisionRoute from "./routes/revision.routes.js"
+
+
+
 dotenv.config(); // Access env file
 
 const app = express();
@@ -11,6 +15,14 @@ const app = express();
 // Origin Client Side
 app.use(express.json());
 app.use(cors());
+
+
+// server routing
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+app.use('/api/revision', revisionRoute);
 
 
 const PORT = process.env.PORT || 3001;
