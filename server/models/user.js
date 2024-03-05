@@ -21,8 +21,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ['student', 'professor', 'parent'],
         required: true
-    }
-
+    },
+    username: {
+        type: String,
+        required: true
+    },
+    phoneNumber: {
+        type: String,
+        required: true
+    },
 },
     {
         timestamps: true
