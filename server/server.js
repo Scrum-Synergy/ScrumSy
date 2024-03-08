@@ -4,8 +4,8 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 
-import revisionRoute from "./routes/revision.routes.js"
-
+import revisionRoute from "./routes/revision.routes.js";
+import userRoute from "./routes/users.routes.js";
 
 
 dotenv.config(); // Access env file

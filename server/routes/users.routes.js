@@ -1,5 +1,5 @@
 import express from 'express';
-import { createUser, getAllUsers, getUserById, updateUser, deleteUser } from '../controllers/user.js';
+import { createUser, getAllUsers, getUserById, updateUser, deleteUser } from '../controllers/users_crud.js';
 import { body } from 'express-validator';
 
 const router = express.Router();
