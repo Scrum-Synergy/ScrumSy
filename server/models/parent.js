@@ -8,6 +8,6 @@ const parentSchema = new mongoose.Schema({
     }]
 });
 
-const Parent = User.discriminator('Parent', parentSchema);
+const Parent = User.discriminator('Parents', parentSchema);
 
 export default Parent;

@@ -11,6 +11,6 @@ const studentSchema = new mongoose.Schema({
 
 });
 
-const Student = User.discriminator('Student', studentSchema);
+const Student = User.discriminator('Students', studentSchema);
 
 export default Student;

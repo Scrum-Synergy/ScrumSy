@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/revision', revisionRoute);
+app.use('/api/users', userRoute); // Use the users route under /api/users 🍔 HappyCoding
 
 
 const PORT = process.env.PORT || 3001;

@@ -8,6 +8,6 @@ const professorSchema = new mongoose.Schema({
     },
 });
 
-const Professor = User.discriminator('Professor', professorSchema);
+const Professor = User.discriminator('Professors', professorSchema);
 
 export default Professor;

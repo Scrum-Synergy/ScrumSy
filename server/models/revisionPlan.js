@@ -29,5 +29,5 @@ const revisionPlanSchema = new mongoose.Schema({
     }
 );
 
-const RevisionPlan = mongoose.model('RevisionPlan', revisionPlanSchema);
+const RevisionPlan = mongoose.model('RevisionPlans', revisionPlanSchema);
 export default RevisionPlan;
