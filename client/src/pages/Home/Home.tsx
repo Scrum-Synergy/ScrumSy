@@ -1,9 +1,15 @@
-import React from 'react'
+import NavBar from "../../components/NavBar";
 
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <>
+    
+      <div className="background">
+        <NavBar />
+      </div>
+      
+    </>
+  );
+};
 
-export default Home
+export default Home;
