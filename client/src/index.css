@@ -11,7 +11,7 @@ html, body{
     background-image: url('assets/hero.jpg');
     position: absolute;
     background-attachment: fixed;
-    background-size: 99.99%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     
