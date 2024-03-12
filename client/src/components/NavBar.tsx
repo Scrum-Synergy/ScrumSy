@@ -1,7 +1,7 @@
 
 const NavBar = () => {
   return (
-    <div className=" h-[83px] relative m-auto mt-4">
+    <div className=" h-[83px] relative m-auto">
       <div className=" w-full h-[83px] left-0 top-0 absolute bg-stone-900 bg-opacity-40 rounded-b-[28px] flex justify-between items-center px-4">
         <a href='/' className="text-white text-4xl font-Kodchasan font-bold italic  ">ReviPro</a>
         <div className='flex  gap-16  '>
