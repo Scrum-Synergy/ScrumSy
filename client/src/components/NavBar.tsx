@@ -19,7 +19,7 @@ const NavBar = () => {
             Login <img className='m-2' src="icons/user.svg" width={35} alt="" />
           </button>
           <a className='mr-3' href="/">
-            <img src="icons/enu.svg" width={50} alt="" />
+            <img src="icons/menu.svg" width={50} alt="" />
           </a>
         </div>
         </div>
