@@ -9,7 +9,9 @@ html, body{
 }
 .background {
     background-image: url('assets/hero.jpg');
-    background-size: cover;
+    position: absolute;
+    background-attachment: fixed;
+    background-size: 99.99%;
     background-repeat: no-repeat;
     background-position: center;
     
