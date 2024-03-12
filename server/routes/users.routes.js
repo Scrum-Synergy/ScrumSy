@@ -4,7 +4,7 @@ import { body } from 'express-validator';
 
 const router = express.Router();
 
-// Validation middleware for user creation
+// Validation middleware for user creation request body fields 
 const validateCreateUser = [
     body('name').notEmpty().withMessage('Name is required'),
     body('email').isEmail().withMessage('Invalid email address'),
@@ -26,3 +26,8 @@ router.put('/:id', validateCreateUser, updateUser);
 router.delete('/:id', deleteUser);
 
 export default router;
+// Path: server/routes/index.js
+// ...
+// Import and use the users routes
+// ...
+//  app.use('/api/users', usersRoutes);

@@ -8,9 +8,9 @@ html, body{
     margin: 0;
 }
 .background {
-    background-image: url('hero.jpg');
+    background-image: url('assets/hero.jpg');
     background-size: cover;
+    background-repeat: no-repeat;
     background-position: center;
-    height: 100vh; 
-    overflow: hidden;
+    
   }
