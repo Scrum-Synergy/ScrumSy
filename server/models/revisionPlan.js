@@ -1,8 +1,11 @@
-// need update ( add other attributes : tests, courses, exercise, etc )
 import mongoose from 'mongoose';
 
 const revisionPlanSchema = new mongoose.Schema({
     name: {
+        type: String,
+        required: true
+    },
+    img: {
         type: String,
         required: true
     },
@@ -22,7 +25,20 @@ const revisionPlanSchema = new mongoose.Schema({
     studentsEnrolled: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Student'
-    }]
+    }],
+    tests: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Test'
+    }],
+    courses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course'
+    }],
+    exercises: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Exercise'
+    }],
+
 },
     {
         timestamps: true

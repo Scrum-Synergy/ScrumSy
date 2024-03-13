@@ -6,6 +6,8 @@ export const createRevisionPlan = async (req, res) => {
     try {
         if (
             !req.body.name ||
+            !req.body.img ||
+            !req.body.description ||
             !req.body.price ||
             !req.body.type
         ) {
@@ -15,6 +17,7 @@ export const createRevisionPlan = async (req, res) => {
         }
         const newRevisionPlan = {
             name: req.body.name,
+            img: req.body.img,
             description: req.body.description,
             price: req.body.price,
             type: req.body.type,
@@ -66,6 +69,7 @@ export const updateRevisionPlan = async (req, res) => {
     try {
         if (
             !req.body.name ||
+            !req.body.img ||
             !req.body.price ||
             !req.body.type ||
             !req.body.description
@@ -78,6 +82,7 @@ export const updateRevisionPlan = async (req, res) => {
             req.params.id,
             {
                 name: req.body.name,
+                img: req.body.img,
                 description: req.body.description,
                 price: req.body.price,
                 type: req.body.type,
