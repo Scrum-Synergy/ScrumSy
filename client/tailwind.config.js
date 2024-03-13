@@ -5,6 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+
     screens: {
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
@@ -21,7 +22,12 @@ export default {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
     },
-    extend: {},
+    extend: {
+      colors: {
+        customPink: '#4F206C',
+        customCyan: '#92025E',
+      }
+    },
   },
   plugins: [],
 }
