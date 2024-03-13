@@ -8,7 +8,7 @@ html, body{
     margin: 0;
 }
 .background {
-    background-image: url('assets/hero.jpg');
+    background-image: url('hero.jpg');
     position: absolute;
     background-attachment: fixed;
     background-size: cover;
