@@ -15,7 +15,7 @@ const PlanCard: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/revision'); 
+        const response = await axios.get('https://scrum-sy-api.vercel.app/api/revision'); 
         setPlans(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
