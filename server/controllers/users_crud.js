@@ -1,5 +1,7 @@
 import User from '../models/user.js';
 import { validationResult } from 'express-validator';
+import bcrypt from 'bcrypt';
+
 
 
 // login User 
@@ -32,7 +34,7 @@ export const createUser = async (req, res) => {
         const newUser = {
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password,
+            password: await bcrypt.hash(req.body.password, 10), // Hash the password using bcrypt
             address: req.body.address,
             userType: req.body.userType,
             username: req.body.username,
