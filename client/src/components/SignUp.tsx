@@ -27,7 +27,7 @@ const SignUp: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/api/users', {
+      const response = await axios.post('https://scrum-sy-api.vercel.app/api/users', {
         name: formData.fullName,
         email: formData.email,
         password: formData.password,
