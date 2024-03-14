@@ -1,6 +1,26 @@
 import User from '../models/user.js';
 import { validationResult } from 'express-validator';
 
+
+// login User 
+export const loginUser = async (req, res) => {
+
+    try {
+        const user = await User.findOne({ email: req.body.email });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        if (user.password !== req.body.password) {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
+        return res.status(200).json({ message: 'Login successful', data: user });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+
+}
+
 // Create a new user
 export const createUser = async (req, res) => {
     try {

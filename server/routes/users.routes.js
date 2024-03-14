@@ -1,5 +1,5 @@
 import express from 'express';
-import { createUser, getAllUsers, getUserById, updateUser, deleteUser } from '../controllers/users_crud.js';
+import { createUser, getAllUsers, getUserById, updateUser, deleteUser, loginUser } from '../controllers/users_crud.js';
 import { body } from 'express-validator';
 
 const router = express.Router();
@@ -16,6 +16,8 @@ const validateCreateUser = [
 
 // Routes
 router.post('/', validateCreateUser, createUser);
+
+router.post('/login', loginUser);
 
 router.get('/', getAllUsers);
 
