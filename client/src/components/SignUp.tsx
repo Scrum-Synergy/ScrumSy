@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import SignIn from './SignIn'; 
 
 const SignUp: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,9 @@ const SignUp: React.FC = () => {
     userType: 'student', // Default user type
     phoneNumber: ''
   });
+  
+  // State to control which component is being displayed
+  const [showSignIn, setShowSignIn] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -46,8 +50,18 @@ const SignUp: React.FC = () => {
     }
   };
 
+  // Function to toggle between SignIn and SignUp components
+  const toggleSignIn = () => {
+    setShowSignIn(prevState => !prevState);
+  };
+
+  // If showSignIn is true, render SignIn component
+  if (showSignIn) {
+    return <SignIn />;
+  }
+
   return (
-    <div className="relative w-96 bg-stone-900 bg-opacity-40 rounded-2xl shadow border-2 border-cyan-400 flex flex-col items-center justify-center">
+    <div className="relative w-96 h-[560px] bg-stone-900 bg-opacity-40 rounded-2xl shadow border-2 border-cyan-400 flex flex-col items-center justify-center">
       <h1 className="p-2 text-white text-4xl font-bold font-['Alegreya Sans'] shadow-sm ">Sign Up</h1>
       <div className="my-2"></div>
       <form onSubmit={handleSubmit} className="flex flex-col items-center">
@@ -129,7 +143,7 @@ const SignUp: React.FC = () => {
           Sign Up
         </button>
       </form>
-      <p className="text-white text-xl font-normal font-['Alegreya Sans'] mt-4">Already have an account? <a href="#" className="text-sky-400">Login</a></p>
+      <p className="text-white text-xl font-normal font-['Alegreya Sans'] mt-4">Already have an account? <button onClick={toggleSignIn} className="text-sky-400">Login</button></p>
     </div>
   );
 }
