@@ -26,7 +26,7 @@ const PlanCard: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <div className='flex gap-5'>
       {plans.map((plan, index) => (
         <div key={index} className=" w-80 h-96 bg-stone-900 bg-opacity-40 rounded-2xl shadow border-2 border-cyan-400 text-white flex-col justify-start items-start inline-flex">
           <img className="CardImage w-full h-40 object-cover rounded-t-2xl" src={plan.img} alt={plan.name} />
@@ -43,7 +43,7 @@ const PlanCard: React.FC = () => {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 
