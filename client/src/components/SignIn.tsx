@@ -22,7 +22,7 @@ const SignIn: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://scrum-sy-api.vercel.app/api/users/login', {
+      const response = await axios.post('https://scrum-sy-api.vercel.app/api/users/signin', {
         email: formData.email,
         password: formData.password
       });
