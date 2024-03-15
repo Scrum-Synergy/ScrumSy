@@ -22,6 +22,14 @@ const SignIn: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      
+        // Koussay 🌹 , 
+          // Avoid putting a const link because it will affect “git pull” in the future and it is difficult to change it in all files. 
+          // It is always recommended to put the (server/localhost) variable in the env file.
+
+          // Add ( ' https://scrum-sy-api.vercel.app ' ) in env file . . .
+          // use -  process.env.VITE_SERVER
+          
       const response = await axios.post('https://scrum-sy-api.vercel.app/api/users/signin', {
         email: formData.email,
         password: formData.password
