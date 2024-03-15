@@ -30,7 +30,7 @@ const SignIn: React.FC = () => {
           // Add ( ' https://scrum-sy-api.vercel.app ' ) in env file . . .
           // use -  process.env.VITE_SERVER
           
-      const response = await axios.post('https://scrum-sy-api.vercel.app/api/users/signin', {
+      const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/users/signin`, {
         email: formData.email,
         password: formData.password
       });
