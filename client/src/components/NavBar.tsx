@@ -9,9 +9,9 @@ const NavBar = () => {
   };
 
   return (
-    <div className="h-[83px] w-full">
+    <div className="h-[83px] w-full px-8">
       <div className="h-[83px] w-full bg-stone-900 bg-opacity-40 rounded-[28px] flex justify-between items-center p-4">
-        <a href='/' className="mr-12 text-white text-4xl kodchasan-bold-italic">ReviPro</a>
+        <a href='/' className="mr-12 ml-4 text-white text-4xl kodchasan-bold-italic">ReviPro</a>
         <div className='flex gap-16'>
           <div className='gap-3  justify-around p-4 hidden md:flex'>
             <a href='/' className="m-auto text-white text-[25px] kodchasan-semibold-italic">HOME</a>
