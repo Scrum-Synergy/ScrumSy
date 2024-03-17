@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import SignIn from './SignIn'; 
+import { toast } from "react-toastify";
+
 
 const SignUp: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -45,11 +47,13 @@ const SignUp: React.FC = () => {
         userType: 'student',
         phoneNumber: ''
       });
+      toast.success('Sign up successful!'); 
     } catch (error) {
       console.error('Error submitting form:', error);
+      toast.error('Sign up failed. Please try again.');
     }
   };
-
+  
   // Function to toggle between SignIn and SignUp components
   const toggleSignIn = () => {
     setShowSignIn(prevState => !prevState);

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 import SignUp from './SignUp'; 
 
@@ -40,8 +41,11 @@ const SignIn: React.FC = () => {
         email: '',
         password: ''
       });
+      toast.success('Sign in successful!');
     } catch (error) {
       console.error('Error submitting form:', error);
+      toast.error('Sign in failed. Please check your credentials.');
+
     }
   };
 
