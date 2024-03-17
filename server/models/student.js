@@ -8,6 +8,10 @@ const studentSchema = new mongoose.Schema({
         enum: ['bac', 'fac'], // to change later 
         required: true
     },
+    planEnrolledIn: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'RevisionPlan'
+    }
 
 });
 
