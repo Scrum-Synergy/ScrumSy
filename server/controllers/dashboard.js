@@ -28,7 +28,7 @@ export default {
           return res.status(404).json({ error: 'Plan not found' });
         }
     
-        const student = new Student({ class: studentClass, planEnrolledIn: planId });
+        const student = new Student({ studentClass: studentClass, planEnrolledIn: planId });
         await student.save();
     
         res.status(201).json(student);

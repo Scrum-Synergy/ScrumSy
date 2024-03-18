@@ -1,5 +1,5 @@
 import express from 'express';
-import dashboardController from '../controllers/dashboard';
+import dashboardController from '../controllers/dashboard.js';
 
 const router = express.Router();
 
@@ -18,4 +18,5 @@ router.post('/createParent', dashboardController.createParent);
 router.put('/:id/updateParent', dashboardController.updateParent);
 router.delete('/:id/deleteParent', dashboardController.deleteParent);
 
-module.exports = router;
+export default router;
+
