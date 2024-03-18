@@ -24,19 +24,19 @@ const revisionPlanSchema = new mongoose.Schema({
     },
     studentsEnrolled: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Student'
+        ref: 'Students'
     }],
     tests: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Test'
+        ref: 'Tests'
     }],
     courses: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Course'
+        ref: 'Courses'
     }],
     exercises: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Exercise'
+        ref: 'Exercises'
     }],
 
 },
