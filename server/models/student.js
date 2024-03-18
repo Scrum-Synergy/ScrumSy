@@ -10,7 +10,7 @@ const studentSchema = new mongoose.Schema({
     },
     planEnrolledIn: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'RevisionPlan'
+        ref: 'RevisionPlans'
     }
 
 });

@@ -6,7 +6,7 @@ import cors from "cors";
 // ...
 import revisionRoute from "./routes/revision.routes.js";
 import userRoute from "./routes/users.routes.js";
-
+import dashboardRoute from "./routes/dashboard.routes.js";
 
 dotenv.config(); // Access env file
 
@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/revision', revisionRoute);
 app.use('/api/users', userRoute); // Use the users route under /api/users 🍔 HappyCoding
-
+app.use("/api/dashboard", dashboardRoute); // Use the dashboard route under /api/dashboard 👨‍🍳 HappyCoding
 
 const PORT = process.env.PORT || 3001;
 const MONGODB_URL = process.env.MONGODB_URL;

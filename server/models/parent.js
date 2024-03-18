@@ -4,7 +4,7 @@ import User from './user.js';
 const parentSchema = new mongoose.Schema({
     children: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Student'
+        ref: 'Students'
     }]
 });
 
