@@ -6,7 +6,7 @@ const requireAuth = async (req, res, next) => {
     const token = req.headers.jwt;
 
 
-    const JWT_SECRET = process.env.JWT_SECRET;
+    const JWT_SECRET = process.env.JWT_SECRET; // key!!
 
     try {
         if (!JWT_SECRET) {
