@@ -1,7 +1,7 @@
 import requireAuth from '../middleware/authMiddleware.js';
 
 
-export const requireAuth = (req, res) => {
+export const authStatus = (req, res) => {
     res.status(200).json({ isAuthenticated: true, user: req.user });
 }
 
