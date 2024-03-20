@@ -1,11 +1,11 @@
 // authRoutes.js
 import express from 'express';
-import requireAuth from '../middleware/authMiddleware.js';
+import { requireAuth, signOut } from '../controllers/auth.js';
 
 const router = express.Router();
 
-router.get('/status', requireAuth, (req, res) => {
-    res.status(200).json({ isAuthenticated: true, user: req.user });
-});
+router.get('/status', requireAuth);
+
+router.get('/signout', signOut);
 
 export default router;

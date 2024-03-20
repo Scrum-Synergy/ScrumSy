@@ -35,12 +35,10 @@ const SignIn: React.FC = () => {
        // Extract JWT token from response
       const token = response.data.token;
 
-      // Store JWT token in local storage and cookie
-      localStorage.setItem('jwt', token);
+      // Store JWT token in a cookie 🍪
       document.cookie = `jwt=${token} `;
       
       
-  
       setFormData({
         email: '',
         password: ''

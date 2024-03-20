@@ -15,8 +15,12 @@ function App() {
   useEffect(() => {
     const fetchAuthenticationStatus = async () => {
       try {
-        // Retrieve the JWT token from localStorage 
-        const token = localStorage.getItem('jwt'); 
+        // Retrieve the JWT token from cookies
+        const token = document.cookie.replace(
+          /(?:(?:^|.*;\s*)jwt\s*=\s*([^;]*).*$)|^.*$/,
+          '$1'
+        );
+        
 
         if (!token) {
           setIsLoading(false);
