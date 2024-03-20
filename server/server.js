@@ -3,11 +3,13 @@ import dotenv from "dotenv"; // access env file
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 // ...
 import revisionRoute from "./routes/revision.routes.js";
 import userRoute from "./routes/users.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import dashboardRoute from "./routes/dashboard.routes.js";
+
 
 dotenv.config(); // Access env file
 
@@ -16,6 +18,7 @@ const app = express();
 // Origin Client Side
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
 
 // server routing
