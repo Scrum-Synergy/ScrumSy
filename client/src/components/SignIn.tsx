@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import SignUp from './SignUp'; 
@@ -8,9 +9,8 @@ const SignIn: React.FC = () => {
     email: '',
     password: ''
   });
-  
-  // State to control which component is being displayed
-  const [showSignUp, setShowSignUp] = useState(false);
+
+  const navigate = useNavigate(); 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -23,43 +23,39 @@ const SignIn: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      
-        // Koussay 🌹 , 
-          // Avoid putting a const link because it will affect “git pull” in the future and it is difficult to change it in all files. 
-          // It is always recommended to put the (server/localhost) variable in the env file.
-
-          // Add ( ' https://scrum-sy-api.vercel.app ' ) in env file . . .
-          // use -  process.env.VITE_SERVER
-          
       const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/users/signin`, {
         email: formData.email,
         password: formData.password
       });
-      console.log(response.data);
-  
+
+      const token = response.data.token;
+      document.cookie = `jwt=${token} `;
+      
       setFormData({
         email: '',
         password: ''
       });
+      
       toast.success('Sign in successful!');
+      
+      navigate('/dashboard'); // Redirect to /dashboard 
+      toast.success('Welcome to your dashboard!');
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error('Sign in failed. Please check your credentials.');
-
     }
   };
 
-  // Function to toggle between SignIn and SignUp components
+  const [showSignUp, setShowSignUp] = useState(false);
+
   const toggleSignUp = () => {
     setShowSignUp(prevState => !prevState);
   };
 
-  // If showSignUp is true, render SignUp component
   if (showSignUp) {
     return <SignUp />;
   }
 
-  // Otherwise, render SignIn component
   return (
     <div className="relative w-96 h-[560px] bg-stone-900 bg-opacity-40 rounded-2xl shadow border-2 border-cyan-400 flex flex-col items-center justify-center">
       <h1 className="p-2 text-white text-4xl font-bold font-['Alegreya Sans'] shadow-sm ">Sign In</h1>
