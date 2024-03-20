@@ -12,6 +12,8 @@ const SideBar: React.FC = () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_SERVER}/api/auth/signout`);
       if (response.status === 200) {
+        document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        
         // Redirect to the home page after successful sign-out
         navigate('/');
         console.log("Sign-out successful");
