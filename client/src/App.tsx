@@ -9,6 +9,9 @@ import LoadingSpinner from './components/LoadingSpinner';
 import axios from 'axios';
 
 function App() {
+
+  //todo: remove from app.tsx later on for better readability !
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,19 +39,22 @@ function App() {
         if (response.status === 200) {
           setIsAuthenticated(true);
         }
+      
       } catch (error) {
         console.error('Error fetching authentication status:', error);
+        
       } finally {
         setIsLoading(false);
       }
     };
-
+    
     fetchAuthenticationStatus();
   }, []);
 
   if (isLoading) {
     return <LoadingSpinner />;
   }
+
 
   return (
     <>
@@ -60,7 +66,7 @@ function App() {
           {/* Protected route for the dashboard */}
           <Route
             path="/dashboard"
-            element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />}
+            element={isAuthenticated ? <Dashboard /> : <Navigate to="/"  />}
           />
         </Routes>
       </BrowserRouter>

@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import SignUp from './SignUp'; 
-import { useNavigate } from 'react-router-dom';
 
 const SignIn: React.FC = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
-  const navigate = useNavigate();
 
-
-  // State to control which component is being displayed
-  const [showSignUp, setShowSignUp] = useState(false);
+  const navigate = useNavigate(); 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -26,42 +23,39 @@ const SignIn: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      
       const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/users/signin`, {
         email: formData.email,
         password: formData.password
       });
-      console.log(response.data);
-       // Extract JWT token from response
-      const token = response.data.token;
 
-      // Store JWT token in a cookie 🍪
+      const token = response.data.token;
       document.cookie = `jwt=${token} `;
-      
       
       setFormData({
         email: '',
         password: ''
       });
+      
       toast.success('Sign in successful!');
-      navigate('/dashboard');
+      
+      navigate('/dashboard'); // Redirect to /dashboard 
+      toast.success('Welcome to your dashboard!');
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error('Sign in failed. Please check your credentials.');
-
     }
   };
-  // Function to toggle between SignIn and SignUp components
+
+  const [showSignUp, setShowSignUp] = useState(false);
+
   const toggleSignUp = () => {
     setShowSignUp(prevState => !prevState);
   };
 
-  // If showSignUp is true, render SignUp component
   if (showSignUp) {
     return <SignUp />;
   }
 
-  // Otherwise, render SignIn component
   return (
     <div className="relative w-96 h-[560px] bg-stone-900 bg-opacity-40 rounded-2xl shadow border-2 border-cyan-400 flex flex-col items-center justify-center">
       <h1 className="p-2 text-white text-4xl font-bold font-['Alegreya Sans'] shadow-sm ">Sign In</h1>
