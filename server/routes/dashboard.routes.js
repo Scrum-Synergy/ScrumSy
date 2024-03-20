@@ -1,7 +1,10 @@
 import express from 'express';
 import dashboardController from '../controllers/dashboard.js';
+import requireAuth from '../middleware/authMiddleware.js';
 
 const router = express.Router();
+
+router.use(requireAuth);
 
 router.get('/getStudents', dashboardController.getStudents);
 router.post('/createStudent', dashboardController.createStudent);

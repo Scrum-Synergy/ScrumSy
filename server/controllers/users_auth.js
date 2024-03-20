@@ -46,17 +46,16 @@ export const signIn = async (req, res) => {
       }
 
       // Generate a JWT token
-      const token = jwt.sign({ 
+      const token = jwt.sign({
+
          userId: user._id,
          email: user.email,
          username: user.username,
          // Add any other data you want to include in the token here
-      }, 'scrum');
+      }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
-      res.status(200).json({ token });
+      res.status(200).json({ email, username: user.username, userType: user.userType, token });
    } catch (error) {
       res.status(500).json({ message: 'Internal server error' });
    }
 };
-
-//module.exports = { signUp, signIn };

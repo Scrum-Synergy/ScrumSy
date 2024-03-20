@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import SignUp from './SignUp'; 
+import { useNavigate } from 'react-router-dom';
 
 const SignIn: React.FC = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
-  
+  const navigate = useNavigate();
+
+
   // State to control which component is being displayed
   const [showSignUp, setShowSignUp] = useState(false);
 
@@ -24,31 +27,32 @@ const SignIn: React.FC = () => {
     e.preventDefault();
     try {
       
-        // Koussay 🌹 , 
-          // Avoid putting a const link because it will affect “git pull” in the future and it is difficult to change it in all files. 
-          // It is always recommended to put the (server/localhost) variable in the env file.
-
-          // Add ( ' https://scrum-sy-api.vercel.app ' ) in env file . . .
-          // use -  process.env.VITE_SERVER
-          
       const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/users/signin`, {
         email: formData.email,
         password: formData.password
       });
       console.log(response.data);
+       // Extract JWT token from response
+      const token = response.data.token;
+
+      // Store JWT token in local storage and cookie
+      localStorage.setItem('token', token);
+      document.cookie = `token=${token} `;
+      
+      
   
       setFormData({
         email: '',
         password: ''
       });
       toast.success('Sign in successful!');
+      navigate('/dashboard')
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error('Sign in failed. Please check your credentials.');
 
     }
   };
-
   // Function to toggle between SignIn and SignUp components
   const toggleSignUp = () => {
     setShowSignUp(prevState => !prevState);
