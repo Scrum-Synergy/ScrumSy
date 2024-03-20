@@ -1,13 +1,11 @@
 import jwt from 'jsonwebtoken';
-import user from '../models/user.js';
 
 const requireAuth = async (req, res, next) => {
     // get token from get req headers 
     const token = req.headers.jwt;
 
 
-    const JWT_SECRET = process.env.JWT_SECRET; // key!!
-
+    const JWT_SECRET = process.env.JWT_SECRET;
     try {
         if (!JWT_SECRET) {
             throw new Error("JWT_SECRET environment variable is not set.");
@@ -17,7 +15,7 @@ const requireAuth = async (req, res, next) => {
             throw new Error("No JWT token found in cookies.");
         }
 
-        const decodedToken = await jwt.verify(token, JWT_SECRET);
+        const decodedToken = jwt.verify(token, JWT_SECRET);
         console.log("Decoded token:", decodedToken);
         req.user = decodedToken; // Store the decoded token in request for future use
         next();
