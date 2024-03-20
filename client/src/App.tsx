@@ -15,7 +15,20 @@ function App() {
   useEffect(() => {
     const fetchAuthenticationStatus = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_SERVER}/api/auth/status`);
+        // Retrieve the JWT token from localStorage 
+        const token = localStorage.getItem('jwt'); 
+
+        if (!token) {
+          setIsLoading(false);
+          return;
+        }
+
+        const response = await axios.get(`${import.meta.env.VITE_SERVER}/api/auth/status`, {
+          headers: {
+            jwt: token // Include the token in the 'jwt' header
+          }
+        });
+
         if (response.status === 200) {
           setIsAuthenticated(true);
         }

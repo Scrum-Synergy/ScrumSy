@@ -36,8 +36,8 @@ const SignIn: React.FC = () => {
       const token = response.data.token;
 
       // Store JWT token in local storage and cookie
-      localStorage.setItem('token', token);
-      document.cookie = `token=${token} `;
+      localStorage.setItem('jwt', token);
+      document.cookie = `jwt=${token} `;
       
       
   
@@ -46,7 +46,7 @@ const SignIn: React.FC = () => {
         password: ''
       });
       toast.success('Sign in successful!');
-      navigate('/dashboard')
+      navigate('/dashboard');
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error('Sign in failed. Please check your credentials.');
