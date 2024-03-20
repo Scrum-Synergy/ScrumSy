@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import SignUp from './SignUp'; 
@@ -38,8 +38,8 @@ const SignIn: React.FC = () => {
       
       toast.success('Sign in successful!');
       
-      navigate('/dashboard'); // Redirect to /dashboard 
-      toast.success('Welcome to your dashboard!');
+      navigate('/dashboard');
+      toast.success('Welcome to your dashboard');
     } catch (error) {
       console.error('Error submitting form:', error);
       toast.error('Sign in failed. Please check your credentials.');
