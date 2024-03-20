@@ -41,7 +41,7 @@ export default {
      try {
        const { id } = req.params;
        const { studentClass } = req.body;
-       const student = await Student.findByIdAndUpdate(id, { class: studentClass }, { new: true });
+       const student = await Student.findByIdAndUpdate(id, { studentClass: studentClass }, { new: true });
        if (!student) {
          return res.status(404).json({ error: 'Student not found' });
        }
