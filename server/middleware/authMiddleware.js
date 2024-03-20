@@ -27,4 +27,5 @@ const requireAuth = (req, res, next) => {
     }
 };
 
-export { requireAuth };
+
+export default requireAuth;
