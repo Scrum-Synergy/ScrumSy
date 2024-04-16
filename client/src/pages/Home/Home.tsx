@@ -6,8 +6,6 @@ const getStarted = () => {
   //show sign up component
 }
 
-
-
 const Home = () => {
   return (
     <>

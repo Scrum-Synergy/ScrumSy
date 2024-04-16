@@ -2,9 +2,6 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
 
-// Sign up a new user (  if CRUD is enabled, this should be a POST request )
-// The password is hashed before saving it to the database
-// 😊 Koussay Please Check This Signup ( use it inside CRUD )
 export const signUp = async (req, res) => {
    try {
       const { username, password } = req.body;
@@ -51,7 +48,7 @@ export const signIn = async (req, res) => {
          userId: user._id,
          email: user.email,
          username: user.username,
-         // Add any other data you want to include in the token here
+         userType: user.userType,
       }, process.env.JWT_SECRET, { expiresIn: '1d' });
 
       res.status(200).json({ email, username: user.username, userType: user.userType, token });

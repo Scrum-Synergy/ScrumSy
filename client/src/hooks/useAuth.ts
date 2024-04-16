@@ -4,6 +4,11 @@ import axios from "axios";
 export function useAuth() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    userType: "",
+  });
 
   useEffect(() => {
     const fetchAuthenticationStatus = async () => {
@@ -30,6 +35,7 @@ export function useAuth() {
 
         if (response.status === 200) {
           setIsAuthenticated(true);
+          setUser(response.data.user);
         }
       } catch (error) {
         console.error("Error fetching authentication status:", error);
@@ -41,5 +47,5 @@ export function useAuth() {
     fetchAuthenticationStatus();
   }, []);
 
-  return { isAuthenticated, isLoading };
+  return { isAuthenticated, isLoading, user };
 }

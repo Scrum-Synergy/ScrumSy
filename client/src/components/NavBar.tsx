@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import {  useState } from 'react';
+import { useAuth } from '../hooks/useAuth';
 import SignIn from './SignIn';
 
 const NavBar = () => {
   const [showSignUp, setShowSignUp] = useState(false);
+  const { isAuthenticated } = useAuth(); 
 
   const toggleSignUp = () => {
     setShowSignUp(!showSignUp);
@@ -21,9 +23,16 @@ const NavBar = () => {
             <img src="icons/line.svg" width={40} alt="" />
 
             <a href='/plans' className="m-auto text-white text-[25px] kodchasan-semibold-italic">PLANS</a>
+            {isAuthenticated && ( 
+              <div className='flex'>
+              <img src="icons/line.svg" width={40} alt="" />
+              <a href='/dashboard' className="m-auto text-white text-[25px] kodchasan-semibold-italic">DASHBOARD</a>
+              </div>
+
+            )}
           </div>
           <div className='flex justify-center items-center gap-6 p-2'>
-            <button onClick={toggleSignUp} className=' hidden sm:flex justify-center items-center rounded-[27px] bg-gradient-to-r from-blue-600 to-customCyan w-36 h-14 font-["Advent Pro"] text-white text-2xl'>
+            <button onClick={toggleSignUp} className='hidden sm:flex justify-center items-center rounded-[27px] bg-gradient-to-r from-blue-600 to-customCyan w-36 h-14 font-["Advent Pro"] text-white text-2xl'>
               Login <img className='m-2' src="icons/user.svg" width={35} alt="" />
             </button>
             <div className='absolute top-[120px] right-10 '>{showSignUp && <SignIn />}</div>
