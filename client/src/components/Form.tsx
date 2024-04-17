@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 interface FormData {
-  email: string; 
+  email: string ; 
   subject: string;
   degree: string;
   description: string;
@@ -12,6 +12,7 @@ interface FormData {
 }
 
 const RevisionPlanForm: React.FC = () => {
+
   const [formData, setFormData] = useState<FormData>({
     email: '',
     subject: '',
@@ -21,6 +22,7 @@ const RevisionPlanForm: React.FC = () => {
 
   });
 
+ 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
@@ -29,35 +31,37 @@ const RevisionPlanForm: React.FC = () => {
     }));
   };
   
+  
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    axios.post(`${import.meta.env.VITE_SERVER}/api/request/create`, formData)
-      .then(response => {
-        console.log(response.data);
-        setFormData({
-          email: '',
-          subject: '',
-          degree: '',
-          description: '',
-          status: 'pending'
-        });
-        toast.success('Revision Plan Form submitted successfully!');
-      })
-      .catch(error => {
-        console.error('Error submitting form:', error);
-        toast.error('Revision Plan Form submission failed. Please try again.');
+    const token = document.cookie.replace(
+      /(?:(?:^|.*;\s*)jwt\s*=\s*([^;]*).*$)|^.*$/,
+      "$1"
+    );
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_SERVER}/api/request/create`, formData, {
+        headers: {
+          jwt: token,
+        },
       });
+      console.log(response.data);
 
+      toast.success('Revision Plan submitted successfully!');
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error('Failed to submit Revision Plan. Please try again.');
+    }
+  
   };
 
   return (
-    <div className='w-[600px]'>
-      <br />
-      <div className="themeOne">
+    <div className='w-full'>
+      
+
         <form 
           
-          className="mx-auto w-full max-w-[900px] rounded-[10px] border border-stroke bg-white p-10 themeTwo"
+          className=" md:w-[560px] max-w-[1200px]  rounded-[10px] border border-stroke bg-white p-10 "
           onSubmit={handleSubmit}
         >
           <div className="SortableItem fb-builder-item">
@@ -80,6 +84,7 @@ const RevisionPlanForm: React.FC = () => {
                 placeholder="Enter Email Address"
                 value={formData.email}
                 onChange={handleChange}
+                
               />
             </div>
           </div>
@@ -92,17 +97,25 @@ const RevisionPlanForm: React.FC = () => {
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-              >
-                <option value="place_holder_option_1">maths</option>
-                <option value="place_holder_option_2">sciences</option>
-                <option value="place_holder_option_3">physics</option>
-                <option value="place_holder_option_4">chemistry</option>
-                <option value="place_holder_option_5">biology</option>
-                <option value="place_holder_option_6">english</option>
-                <option value="place_holder_option_7">history</option>
-                <option value="place_holder_option_8">geography</option>
-                <option value="place_holder_option_9">french</option>
+                required
                 
+              >
+                <option value=""></option>
+                <option value="maths">Maths</option>
+                <option value="physics">Physics</option>
+                <option value="chemistry">Chemistry</option>
+                <option value="biology">Biology</option>
+                <option value="geography">Geography</option>
+                <option value="history">History</option>
+                <option value="economics">Economics</option>
+                <option value="commerce">Commerce</option>
+                <option value="accounting">Accounting</option>
+                <option value="business">Business</option>
+                <option value="computer">Computer</option>
+                <option value="sciences">Sciences</option>
+                <option value="english">English</option>
+                <option value="french">French</option>
+
               </select>
             </div>
             
@@ -114,16 +127,15 @@ const RevisionPlanForm: React.FC = () => {
             </label>
             <select
               className="w-full appearance-none rounded border border-stroke bg-white px-5 py-3 text-base text-black outline-none focus:border-primary"
-              name="class"
+              name="degree"
               value={formData.degree}
               onChange={handleChange}
+              required
             >
-              <option value="place_holder_option_1">LFSI1</option>
-              <option value="place_holder_option_2">LFSI2</option>
-              <option value="place_holder_option_3">LFSI3</option>
-              <option value="place_holder_option_4">LITIC1</option>
-              <option value="place_holder_option_5">LITIC2</option>
-              <option value="place_holder_option_6">LITIC3</option>
+            <option value=""></option>
+            <option value="LFSI1">LFSI1</option>
+            <option value="LFSI2">LFSI2</option>
+            <option value="LFSI3">LFSI3</option>
             </select>
           </div>
           <div className="mb-4">
@@ -148,7 +160,6 @@ const RevisionPlanForm: React.FC = () => {
           </div>
         </form>
       </div>
-    </div>
   );
 }
 

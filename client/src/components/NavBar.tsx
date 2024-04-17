@@ -7,7 +7,7 @@ const NavBar = () => {
   const { isAuthenticated } = useAuth(); 
 
   const toggleSignUp = () => {
-    setShowSignUp(!showSignUp);
+    setShowSignUp(!showSignUp); 
   };
 
   return (

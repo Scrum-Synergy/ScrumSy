@@ -1,14 +1,19 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { FaBell } from 'react-icons/fa';
 import { IoMdMail } from 'react-icons/io';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { HiOutlineMenu } from "react-icons/hi";
 import { useAuth } from '../hooks/useAuth';
+import Notification from '../components/Notification';
 
 
 const DashboardNav: React.FC = () => {
+  const [showNotification, setShowShowNotification] = useState(false);
   const { user } = useAuth(); 
-  console.log(user);
+
+  const toggleSignUp = () => {
+    setShowShowNotification(!showNotification); 
+  };
 
   return (
     <div className="w-full h-[75px] flex text-white justify-between text-2xl p-4 bg-[#836FFF] items-center">
@@ -21,13 +26,15 @@ const DashboardNav: React.FC = () => {
 
       
       <div className="ml-auto flex items-center gap-28">
-        <div className='flex'>
+        <div className='flex gap-6'>
         <div className="mx-3 ">
           <IoMdMail />
         </div>
-        <div className="mr-3">
+        <button className="mr-3" onClick={toggleSignUp}>
+          
           <FaBell />
-        </div>
+        </button>
+        <div className='absolute top-[120px] right-10 '>{showNotification && <Notification />}</div>
         </div>
     
     

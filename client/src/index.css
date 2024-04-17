@@ -82,3 +82,26 @@ html, body{
     font-style: italic;
   }
   
+  /* CSS for customizing scrollbar */
+.notification-container::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+  
+}
+
+.notification-container::-webkit-scrollbar-track {
+  
+  background: #211951;
+  border-radius: 20px; /* Track color */
+}
+
+.notification-container::-webkit-scrollbar-thumb {
+  
+  background: #888; /* Thumb color */
+  border-radius: 20px; /* Rounded corners */
+}
+
+.notification-container::-webkit-scrollbar-thumb:hover {
+  
+  background: #8bd031; /* Hover color */
+}
+
