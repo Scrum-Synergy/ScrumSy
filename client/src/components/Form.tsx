@@ -1,30 +1,54 @@
 import React, { useState } from 'react';
+import { toast } from "react-toastify";
+import axios from 'axios';
+
 
 interface FormData {
-  name: string;
-  subject: string;
-  phoneNumber: string;
   email: string; 
-  info: string;
+  subject: string;
+  degree: string;
+  description: string;
+  status: string;
 }
 
 const RevisionPlanForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    subject: '',
-    phoneNumber: '',
     email: '',
-    info: ''
+    subject: '',
+    degree: '',
+    description: '',
+    status: 'pending'
+
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
+  
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
+    axios.post(`${import.meta.env.VITE_SERVER}/api/request/create`, formData)
+      .then(response => {
+        console.log(response.data);
+        setFormData({
+          email: '',
+          subject: '',
+          degree: '',
+          description: '',
+          status: 'pending'
+        });
+        toast.success('Revision Plan Form submitted successfully!');
+      })
+      .catch(error => {
+        console.error('Error submitting form:', error);
+        toast.error('Revision Plan Form submission failed. Please try again.');
+      });
+
   };
 
   return (
@@ -32,9 +56,7 @@ const RevisionPlanForm: React.FC = () => {
       <br />
       <div className="themeOne">
         <form 
-          encType="multipart/form-data"
-          action="https://formbold.com/s/9XqWr"
-          method="POST"
+          
           className="mx-auto w-full max-w-[900px] rounded-[10px] border border-stroke bg-white p-10 themeTwo"
           onSubmit={handleSubmit}
         >
@@ -74,38 +96,49 @@ const RevisionPlanForm: React.FC = () => {
                 <option value="place_holder_option_1">maths</option>
                 <option value="place_holder_option_2">sciences</option>
                 <option value="place_holder_option_3">physics</option>
+                <option value="place_holder_option_4">chemistry</option>
+                <option value="place_holder_option_5">biology</option>
+                <option value="place_holder_option_6">english</option>
+                <option value="place_holder_option_7">history</option>
+                <option value="place_holder_option_8">geography</option>
+                <option value="place_holder_option_9">french</option>
+                
               </select>
             </div>
             
           </div>
+
           <div className="mb-4">
             <label className="mb-2.5 block text-base text-black">
               <span>Class</span>
             </label>
-            <input
-              type="text"
-              className="w-full rounded border border-stroke bg-white px-5 py-3 text-base text-black outline-none focus:border-primary"   
-              name="Class"
-              placeholder="Enter Class"
-              value={formData.name}
+            <select
+              className="w-full appearance-none rounded border border-stroke bg-white px-5 py-3 text-base text-black outline-none focus:border-primary"
+              name="class"
+              value={formData.degree}
               onChange={handleChange}
-            />
+            >
+              <option value="place_holder_option_1">LFSI1</option>
+              <option value="place_holder_option_2">LFSI2</option>
+              <option value="place_holder_option_3">LFSI3</option>
+              <option value="place_holder_option_4">LITIC1</option>
+              <option value="place_holder_option_5">LITIC2</option>
+              <option value="place_holder_option_6">LITIC3</option>
+            </select>
           </div>
-
-          
-          <div className="mb-4  ">
-              <label className="mb-2.5 block text-base text-black">
-                <span>Additional Info</span>
-              </label>
-              <input
-                type= "text"
-                className="w-full rounded border border-stroke bg-white px-5 py-3 text-base text-black outline-none focus:border-primary"
-                name="Additional Info"
-                placeholder="Additional Info"
-                value={formData.info}
-                onChange={handleChange}
+          <div className="mb-4">
+            <label className="mb-2.5 block text-base text-black">
+              <span>Additional Information</span>
+            </label>
+            <textarea
+              className="w-full rounded border border-stroke bg-white px-5 py-3 text-base text-black  focus:border-primary"
+              name="description"
+              placeholder="Additional Information"
+              value={formData.description}
+              onChange={handleChange}
               />
-            </div>
+          </div>
+           
           <div className="btn-toolbar flex items-center space-x-3">
             <input
               type="submit"

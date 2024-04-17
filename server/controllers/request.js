@@ -6,8 +6,8 @@ export const createRequest = async (req, res) => {
         if (
             !req.body.email ||
             !req.body.subject ||
-            !req.body.degree ||
-            !req.body.description
+            !req.body.degree
+
         ) {
             return response.status(400).send({
                 message: 'Send all required fields',
@@ -16,8 +16,7 @@ export const createRequest = async (req, res) => {
         const newRequest = {
             email: req.body.email,
             subject: req.body.subject,
-            degree: req.body.degree,
-            description: req.body.description,
+            degree: req.body.degree
         };
 
         const request = await Request.create(newRequest);
