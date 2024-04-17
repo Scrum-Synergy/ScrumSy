@@ -5,7 +5,6 @@ const studentSchema = new mongoose.Schema({
     studentClass: {
         type: String,
         enum: ['bac', 'fac'], // to change later 
-        required: true
     },
     planEnrolledIn: {
         type: mongoose.Schema.Types.ObjectId,

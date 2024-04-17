@@ -11,7 +11,7 @@ const DashboardNav: React.FC = () => {
   console.log(user);
 
   return (
-    <div className="w-full h-[75px] flex text-white justify-between text-2xl p-4 bg-[#011E54] items-center">
+    <div className="w-full h-[75px] flex text-white justify-between text-2xl p-4 bg-[#836FFF] items-center">
         <a href="#"className="text-white text-xl flex items-center sm:hidden  hover:text-blue-300  ">
         <HiOutlineMenu  className="mr-2 text-2xl" /> <span className="hidden md:flex align-middle">Menu</span>
         </a>

@@ -9,6 +9,7 @@ import revisionRoute from "./routes/revision.routes.js";
 import userRoute from "./routes/users.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import dashboardRoute from "./routes/dashboard.routes.js";
+import requestRoute from "./routes/request.routes.js";
 
 
 dotenv.config(); // Access env file
@@ -30,6 +31,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/revision', revisionRoute);
 app.use('/api/users', userRoute); // Use the users route under /api/users 🍔 HappyCoding
 app.use("/api/dashboard", dashboardRoute); // Use the dashboard route under /api/dashboard 👨‍🍳 HappyCoding
+app.user("/api/request", requestRoute);
 
 const PORT = process.env.PORT || 3001;
 const MONGODB_URL = process.env.MONGODB_URL;
