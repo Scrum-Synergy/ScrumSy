@@ -31,7 +31,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/revision', revisionRoute);
 app.use('/api/users', userRoute); // Use the users route under /api/users 🍔 HappyCoding
 app.use("/api/dashboard", dashboardRoute); // Use the dashboard route under /api/dashboard 👨‍🍳 HappyCoding
-app.user("/api/request", requestRoute);
+app.use("/api/request", requestRoute);
 
 const PORT = process.env.PORT || 3001;
 const MONGODB_URL = process.env.MONGODB_URL;
