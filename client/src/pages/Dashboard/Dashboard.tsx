@@ -34,7 +34,7 @@ const Dashboard = () => {
               <div className="Rectangle9 m-5 mt-12" style={{width: 643, height: 194, background: '#211951', boxShadow: '10px 10px 25px rgba(0, 0, 0, 0.25)', borderRadius: 30}}>
                 <p className='text-white font-bold text-2xl py-8 px-20'>Welcome to the dashboard, {user.username} </p>
                 <p className='text-white  font-Poppins font-sans text-[17.5px] px-20'>“All our dreams can come true, if we have the courage to pursue them. “  <span className='px-3'>Walt Disney</span>     </p>
-                <img className="absolute top-10 right-[650px] w-[210px] h-[210px] rotate-[5deg] " src="Graduated.png" />
+                <img className="absolute top-10 right-[500px] w-[210px] h-[210px] rotate-[5deg] " src="Graduated.png" />
                 <h2 className=' mt-16 text-3xl font-bold text-white'>My Courses</h2>
                 <div>
                   {/*{student.planEnrolledIn.map((revisionPlan) => (
